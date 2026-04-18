@@ -61,8 +61,8 @@ public class GameGraph {
             String currentKey = queue.poll();
             LightGrid current = stateMap.get(currentKey);
 
-            for (int r = 0; r < n; r++) {
-                for (int c = 0; c < n; c++) {
+            for (int r = n-1; r >=0 ; r--) {
+                for (int c = n-1; c >=0; c--) {
                     LightGrid next = current.toggle(r, c);
                     String nextKey = next.toKey();
 

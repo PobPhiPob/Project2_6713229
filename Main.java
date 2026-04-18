@@ -77,8 +77,6 @@ public class Main {
     }
     
         private static void solveAndPrint(LightGrid initial) {
-        System.out.println("\n" + "=".repeat(55));
-        System.out.println("Solving...");
         
         List<Solver.Move> moves = Solver.solve(initial);
         
@@ -94,17 +92,16 @@ public class Main {
             return;
         }
         
-        // Case 3: มี solution >> print ทีละสเต็ป
-        System.out.println("\n===== Solution: " + moves.size() + " move(s) =====");
+        // Case 3: มี solution >>> print ทีละ move
+        System.out.println( moves.size() + " move to turn off all the lights ");
         for (int i = 0; i < moves.size(); i++) {
             Solver.Move m = moves.get(i);
-            String action = m.turnOff ? "turn OFF" : "turn ON";
-            System.out.printf("%nStep %d: toggle (row=%d, col=%d) → %s%n",
+            String action = m.turnOff ? "turn off" : "turn on";
+            System.out.printf("%n>>> Move %d: toggle (row=%d, col=%d) → %s%n",
                               i + 1, m.row, m.col, action);
             System.out.println("States in bits = " + m.stateAfter.toKey());
             m.stateAfter.print();
         }
-        System.out.println("\n*** Solved in " + moves.size() + " moves! ***");
     }
 
     private static int[] readGrid(int n) {
