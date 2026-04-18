@@ -57,6 +57,8 @@ public class Main {
         LightGrid brokegrid = new LightGrid(n, initialState, brokenIndex);
         System.out.println("\nStates in bits = " + brokegrid.toKey());
         brokegrid.print();
+        
+        solveAndPrint(brokegrid);
     }
 
     //To get the valid input integer
@@ -72,6 +74,37 @@ public class Main {
                 sc.next(); // discard bad token
             }
         }
+    }
+    
+        private static void solveAndPrint(LightGrid initial) {
+        System.out.println("\n" + "=".repeat(55));
+        System.out.println("Solving...");
+        
+        List<Solver.Move> moves = Solver.solve(initial);
+        
+        // Case 1: No solution
+        if (moves == null) {
+            System.out.println("\nNo solution !!");
+            return;
+        }
+        
+        // Case 2: ดับหมดอยู่แล้ว
+        if (moves.isEmpty()) {
+            System.out.println("\nAll lights are already off! No moves needed.");
+            return;
+        }
+        
+        // Case 3: มี solution >> print ทีละสเต็ป
+        System.out.println("\n===== Solution: " + moves.size() + " move(s) =====");
+        for (int i = 0; i < moves.size(); i++) {
+            Solver.Move m = moves.get(i);
+            String action = m.turnOff ? "turn OFF" : "turn ON";
+            System.out.printf("%nStep %d: toggle (row=%d, col=%d) → %s%n",
+                              i + 1, m.row, m.col, action);
+            System.out.println("States in bits = " + m.stateAfter.toKey());
+            m.stateAfter.print();
+        }
+        System.out.println("\n*** Solved in " + moves.size() + " moves! ***");
     }
 
     private static int[] readGrid(int n) {
