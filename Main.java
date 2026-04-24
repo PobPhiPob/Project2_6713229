@@ -78,7 +78,7 @@ public class Main {
     
         private static void solveAndPrint(LightGrid initial) {
         
-        List<Solver.Move> moves = Solver.solve(initial);
+        List<Move> moves = Solver.solve(initial);
         
         // Case 1: No solution
         if (moves == null) {
@@ -95,7 +95,7 @@ public class Main {
         // Case 3: มี solution >>> print ทีละ move
         System.out.println( moves.size() + " move to turn off all the lights ");
         for (int i = 0; i < moves.size(); i++) {
-            Solver.Move m = moves.get(i);
+            Move m = moves.get(i);
             String action = m.turnOff ? "turn off" : "turn on";
             System.out.printf("%n>>> Move %d: toggle (row=%d, col=%d) → %s%n",
                               i + 1, m.row, m.col, action);

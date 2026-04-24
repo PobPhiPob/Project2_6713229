@@ -16,24 +16,24 @@ import java.util.*;
 
 public class GameGraph {
 
-    public static class MoveEdge extends DefaultEdge {
-        private final int row;
-        private final int col;
-
-        public MoveEdge(int row, int col) {
-            this.row = row;
-            this.col = col;
-        }
-
-        //Getter
-        public int getRow() { return row; }
-        public int getCol() { return col; }
-
-        @Override
-        public String toString() {
-            return "toggle(" + row + "," + col + ")";
-        }
-    }
+//    public static class MoveEdge extends DefaultEdge {
+//        private final int row;
+//        private final int col;
+//
+//        public MoveEdge(int row, int col) {
+//            this.row = row;
+//            this.col = col;
+//        }
+//
+//        //Getter
+//        public int getRow() { return row; }
+//        public int getCol() { return col; }
+//
+//        @Override
+//        public String toString() {
+//            return "toggle(" + row + "," + col + ")";
+//        }
+//    }
 
 
     private final Graph<String, MoveEdge> graph;

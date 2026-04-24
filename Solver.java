@@ -13,18 +13,6 @@ import org.jgrapht.GraphPath;
 import org.jgrapht.alg.shortestpath.BFSShortestPath;
 
 public class Solver {
-    //inner class
-    public static class Move {
-        public final int row, col;
-        public final LightGrid stateAfter ;
-        public final boolean turnOff;
-        public Move(int r,int c, LightGrid s,boolean off){
-            this.row=r; 
-            this.col=c; 
-            this.stateAfter=s; 
-            this.turnOff=off;
-        } 
-    }
     
     public static List <Move> solve(LightGrid initial){
         //case when start all off
@@ -35,16 +23,16 @@ public class Solver {
         if(!gg.hasState(goal)) return null;
         
         //
-        BFSShortestPath<String, GameGraph.MoveEdge> bfs = new BFSShortestPath<>(gg.getGraph());
-        GraphPath<String, GameGraph.MoveEdge> path = bfs.getPath(initial.toKey(), goal);
+        BFSShortestPath<String, MoveEdge> bfs = new BFSShortestPath<>(gg.getGraph());
+        GraphPath<String, MoveEdge> path = bfs.getPath(initial.toKey(), goal);
         if (path == null) return null;
 
         List<Move> moves = new ArrayList<>();
         List<String> vertices = path.getVertexList();
-        List<GameGraph.MoveEdge> edges = path.getEdgeList();
+        List<MoveEdge> edges = path.getEdgeList();
 
         for (int i = 0; i < edges.size(); i++) {
-            GameGraph.MoveEdge e = edges.get(i);
+            MoveEdge e = edges.get(i);
             LightGrid before = gg.getGrid(vertices.get(i));
             LightGrid after  = gg.getGrid(vertices.get(i+1));
             int r = e.getRow(), c = e.getCol();
