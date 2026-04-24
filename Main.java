@@ -97,7 +97,7 @@ public class Main {
         for (int i = 0; i < moves.size(); i++) {
             Move m = moves.get(i);
             String action = m.turnOff ? "turn off" : "turn on";
-            System.out.printf("%n>>> Move %d: toggle (row=%d, col=%d) → %s%n",
+            System.out.printf("%n>>> Move %d: toggle (row=%d, col=%d) -> %s%n",
                               i + 1, m.row, m.col, action);
             System.out.println("States in bits = " + m.stateAfter.toKey());
             m.stateAfter.print();

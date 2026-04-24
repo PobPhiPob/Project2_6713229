@@ -21,9 +21,6 @@ public class LightGrid {
         this.n = n;
         this.state = Arrays.copyOf(initialState, n * n);
         this.brokenIndex = brokenIndex;
-        /*if (brokenIndex >= 0) {
-            this.state[brokenIndex] = 0;
-        }*/
     }
 
     //Copy constructor for BFS (too not override the initial state)
