@@ -12,6 +12,7 @@ public class Move {
     public final int row, col;
     public final LightGrid stateAfter ;
     public final boolean turnOff;
+
     public Move(int r,int c, LightGrid s,boolean off){
         this.row=r;
         this.col=c;
